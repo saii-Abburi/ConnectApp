@@ -11,6 +11,13 @@ export interface TeamMember {
   role: string;
 }
 
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  avatarUrl?: string;
+}
+
 export interface Team {
   id: string;
   name: string;
