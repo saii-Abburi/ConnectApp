@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-primary text-secondary antialiased;
+  }
+}
+
+@layer components {
+  /* Premium Card Styles */
+  .premium-card {
+    @apply bg-white rounded-xl border border-neutral/50 p-6 
+           transition-all duration-300 hover:shadow-premium-hover 
+           hover:border-accent/20 hover:scale-[1.02] 
+           hover:rotate-[0.5deg];
+  }
+
+  /* Premium Button Styles */
+  .premium-button {
+    @apply px-6 py-3 rounded-lg font-medium 
+           transition-all duration-300 
+           hover:scale-105 hover:shadow-premium-hover 
+           active:scale-95;
+  }
+
+  /* Premium Input Styles */
+  .premium-input {
+    @apply w-full px-4 py-3 rounded-lg border-2 border-neutral/50
+           transition-all duration-200
+           focus:outline-none focus:border-accent
+           hover:border-neutral;
+  }
+
+  /* Navbar Link Animation */
+  .nav-link {
+    @apply relative py-2;
+  }
+
+  .nav-link::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 
+           bg-accent transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  /* Section Animation */
+  .section-animate {
+    @apply opacity-0 translate-y-8 transition-all duration-700;
+  }
+
+  .section-animate.in-view {
+    @apply opacity-100 translate-y-0;
+  }
+}
+
+/* Scroll Behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-neutral/10;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-neutral rounded-full hover:bg-accent/50 transition-colors;
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+@layer base {
+  h1 {
+    @apply text-2xl font-bold;
+  }
+  h2 {
+    @apply text-xl font-semibold;
+  }
+  h3 {
+    @apply text-lg font-medium;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md transition-colors;
+  }
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+  }
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-800 hover:bg-gray-300;
+  }
+} 
