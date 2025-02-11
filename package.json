@@ -16,7 +16,8 @@
     "next": "^15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-     "tailwind-merge": "^1.14.0"
+    "react-hot-toast": "^2.5.1",
+    "tailwind-merge": "^1.14.0"
   },
   "devDependencies": {
     "@types/node": "^22.13.1",

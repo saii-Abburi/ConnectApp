@@ -3,6 +3,8 @@ import Layout from '../components/Layout';
 import { TeamProvider } from '../context/TeamContext';
 import Head from 'next/head';
 import '../styles/globals.css';
+import { ChatProvider } from '@/context/ChatContext';
+import Chat from './chat';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -11,9 +13,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Connect | Student Collaboration Platform</title>
       </Head>
       <TeamProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <ChatProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+          <Chat />
+        </ChatProvider>
       </TeamProvider>
     </>
   );

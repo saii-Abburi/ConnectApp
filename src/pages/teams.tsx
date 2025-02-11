@@ -9,7 +9,10 @@ import {
   ExternalLink, 
   Users, 
   Heart,
-  MoreVertical 
+  MoreVertical,
+  Mail,
+  Share,
+  Flag
 } from 'lucide-react';
 import { fakeTeams } from '../data/fakeTeams';
 import Image from 'next/image';
@@ -22,6 +25,7 @@ const Teams: NextPage = () => {
   const [filter, setFilter] = useState('all');
   const [loading, setLoading] = useState(true);
   const [likedTeams, setLikedTeams] = useState<number[]>([]);
+  const [openDropdownId, setOpenDropdownId] = useState<number | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -43,6 +47,17 @@ const Teams: NextPage = () => {
         : [...prev, teamId]
     );
   };
+
+  const handleDropdownToggle = (teamId: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setOpenDropdownId(openDropdownId === teamId ? null : teamId);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = () => setOpenDropdownId(null);
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
@@ -131,11 +146,49 @@ const Teams: NextPage = () => {
                       }`}
                     />
                   </button>
-                  <button
-                    className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-full transition-colors"
-                  >
-                    <MoreVertical className="w-5 h-5" />
-                  </button>
+                  <div className="relative">
+                    <button
+                      onClick={(e) => handleDropdownToggle(team.id, e)}
+                      className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-full transition-colors"
+                    >
+                      <MoreVertical className="w-5 h-5" />
+                    </button>
+                    
+                    {/* Dropdown Menu */}
+                    {openDropdownId === team.id && (
+                      <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-10">
+                        <button
+                          onClick={() => {/* Add follow logic */}}
+                          className="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-50 flex items-center"
+                        >
+                          <Users className="w-4 h-4 mr-2" />
+                          Follow Team
+                        </button>
+                        <button
+                          onClick={() => router.push(`/chat/${team.id}`)}
+                          className="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-50 flex items-center"
+                        >
+                          <Mail className="w-4 h-4 mr-2" />
+                          Message Team
+                        </button>
+                        <button
+                          onClick={() => {/* Add share logic */}}
+                          className="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-50 flex items-center"
+                        >
+                          <Share className="w-4 h-4 mr-2" />
+                          Share Team
+                        </button>
+                        <div className="border-t border-gray-100 my-1"></div>
+                        <button
+                          onClick={() => {/* Add report logic */}}
+                          className="w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-gray-50 flex items-center"
+                        >
+                          <Flag className="w-4 h-4 mr-2" />
+                          Report Team
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
 

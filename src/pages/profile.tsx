@@ -2,10 +2,18 @@ import { NextPage } from 'next';
 import { useAuth } from '../context/AuthContext';
 import { useState } from 'react';
 
+interface User {
+  name?: string;
+  bio?: string;
+  skills?: string[];
+  education?: string;
+  // ... other existing user properties ...
+}
+
 const Profile: NextPage = () => {
   const { user } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<User>({
     name: user?.name || '',
     bio: user?.bio || '',
     skills: user?.skills || [],
