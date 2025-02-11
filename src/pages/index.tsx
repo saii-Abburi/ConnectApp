@@ -72,28 +72,35 @@ const LandingPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                Empowering Students to Collaborate & Build
+                Connect, Collaborate, Create
               </motion.h1>
               <motion.p 
                 className="text-xl text-gray-600 mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                Join the community of student developers and bring your ideas to life.
+              </motion.p>
+              <motion.div
+                className="flex flex-col sm:flex-row gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                Join teams, participate in hackathons, and showcase your work!
-              </motion.p>
-              <div className="flex gap-4">
-                <Link 
-                  href="/register" 
-                  className="inline-flex items-center px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-900 transition-all hover:scale-105"
+                <Link
+                  href="/register"
+                  className="px-8 py-4 bg-black text-white rounded-lg hover:bg-gray-900 text-center"
                 >
                   Get Started
-                  <ChevronRight className="ml-2 w-5 h-5" />
                 </Link>
-                <button className="px-6 py-3 border-2 border-black text-black rounded-lg hover:bg-black hover:text-white transition-all">
+                <Link
+                  href="/about"
+                  className="px-8 py-4 border border-gray-300 rounded-lg hover:bg-gray-50 text-center"
+                >
                   Learn More
-                </button>
-              </div>
+                </Link>
+              </motion.div>
             </div>
             <div className="w-full lg:w-1/2">
               <div className="bg-gray-100 rounded-lg p-8 text-center">
@@ -178,53 +185,6 @@ const LandingPage = () => {
           </Link>
         </div>
       </section>
-
-      {/* Footer */}
-      {/* <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-xl font-bold mb-4">Connect</h3>
-              <p className="text-gray-400">
-                Empowering student collaboration and innovation.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-2">
-                <li><Link href="/about" className="text-gray-400 hover:text-white">About</Link></li>
-                <li><Link href="/teams" className="text-gray-400 hover:text-white">Teams</Link></li>
-                <li><Link href="/contact" className="text-gray-400 hover:text-white">Contact</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Resources</h4>
-              <ul className="space-y-2">
-                <li><Link href="/blog" className="text-gray-400 hover:text-white">Blog</Link></li>
-                <li><Link href="/docs" className="text-gray-400 hover:text-white">Documentation</Link></li>
-                <li><Link href="/faq" className="text-gray-400 hover:text-white">FAQ</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Connect With Us</h4>
-              <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white">
-                  <Github className="w-6 h-6" />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white">
-                  <Twitter className="w-6 h-6" />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white">
-                  <Linkedin className="w-6 h-6" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-            <p>&copy; {new Date().getFullYear()} Connect. All rights reserved.</p>
-          </div>
-        </div>
-      </footer> */}
     </div>
   );
 };
